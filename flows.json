@@ -1,0 +1,179 @@
+[
+    {
+        "id": "d2d66b98.8f2fe8",
+        "type": "tab",
+        "label": "Поток 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7f0b04b1.c3c72c",
+        "type": "inject",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "cc146407.c00d08"
+            ]
+        ]
+    },
+    {
+        "id": "cc146407.c00d08",
+        "type": "http request",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.telegram.org/bot1672123182:AAHl4-dLrhEXvPzIC-l1fa_wvTKKofjHD2Q/setWebhook?url=https://804743711fe7.ngrok.io/first_bot",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "bfdb122b.64a2"
+            ]
+        ]
+    },
+    {
+        "id": "68318650.0a00d8",
+        "type": "http in",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "url": "/first_bot",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "2bba6d07.baa312",
+                "e85dd055.f0d9b",
+                "332c3173.4ef47e"
+            ]
+        ]
+    },
+    {
+        "id": "bfdb122b.64a2",
+        "type": "debug",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2bba6d07.baa312",
+        "type": "function",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "func": "msg.payload = {\n    \n     text: \"Привет\",\n     chat_id: msg.payload.message.from.id,\n     \n  }\n return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "ab8f830.681218"
+            ]
+        ]
+    },
+    {
+        "id": "ab8f830.681218",
+        "type": "http request",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.telegram.org/bot1672123182:AAHl4-dLrhEXvPzIC-l1fa_wvTKKofjHD2Q/sendMessage",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "ea797fcf.3cf93"
+            ]
+        ]
+    },
+    {
+        "id": "e85dd055.f0d9b",
+        "type": "debug",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "332c3173.4ef47e",
+        "type": "http response",
+        "z": "d2d66b98.8f2fe8",
+        "name": "code 200",
+        "statusCode": "",
+        "headers": {},
+        "x": 140,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ea797fcf.3cf93",
+        "type": "debug",
+        "z": "d2d66b98.8f2fe8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    }
+]
